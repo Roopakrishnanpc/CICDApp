@@ -18,7 +18,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
         <sonar.host.url>http://35.197.77.174:9000</sonar.host.url> <!-- Replace with your SonarQube server URL -->
         <sonar.login>sonarqbe-token</sonar.login> <!-- Replace with your SonarQube token -->
          <!-- <sonar.java.binaries>${project.build.directory}/classes</sonar.java.binaries>Path to compiled classes -->
