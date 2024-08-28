@@ -1,15 +1,14 @@
 pipeline {
     agent {
         docker {
-            // Replace with the appropriate Docker image that includes JDK 17
-            
-            image 'openjdk:17'  // Correct image name
+            image 'openjdk:17'  // Use the appropriate Docker image
             args '-u 0:0'  // Optional: Run as root if needed
-            // Optional: If you need to set specific Docker options
+            // Optional: Add Docker options if necessary
             // args '-v /root/.m2:/root/.m2' // Example for persisting Maven cache
         }
     }
-        stages {
+    
+    stages {
         stage('Check Java Version') {
             steps {
                 script {
@@ -17,8 +16,7 @@ pipeline {
                 }
             }
         }
-        }
-    stages {
+        
         stage('Build') {
             steps {
                 script {
@@ -28,6 +26,7 @@ pipeline {
                 }
             }
         }
+
         stage('SonarQube Analysis') {
             steps {
                 script {
@@ -38,7 +37,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Build and Test') {
+            steps {
+                sh './mvnw clean test'
+            }
+        }
     }
+    
     post {
         always {
             echo 'Pipeline execution completed.'
@@ -51,6 +57,7 @@ pipeline {
         }
     }
 }
+
 
 
 /*
