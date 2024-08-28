@@ -1,0 +1,4 @@
+dummyservice:
+  port: 8081
+  address: 127.0.0.1
+#run as -Dserver.port=8081 and see in envrioment variables
