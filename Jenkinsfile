@@ -2,7 +2,9 @@ pipeline {
     agent {
         docker {
             // Replace with the appropriate Docker image that includes JDK 17
-            image 'openjdk-17'
+            
+            image 'openjdk:17'  // Correct image name
+            args '-u 0:0'  // Optional: Run as root if needed
             // Optional: If you need to set specific Docker options
             // args '-v /root/.m2:/root/.m2' // Example for persisting Maven cache
         }
