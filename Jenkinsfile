@@ -38,11 +38,23 @@ pipeline {
             }
         }
 
-        stage('Build and Test') {
+        stage('Print Environment Variables') {
             steps {
-                sh './mvnw clean test'
+                script {
+                    sh 'printenv'
+                }
             }
         }
+
+        stage('Build and Test') {
+            steps {
+                script {
+                    sh 'chmod +x mvnw'
+                    sh './mvnw clean test -X'  // Run Maven with debug logging
+                }
+            }
+        }
+
     }
     
     post {
