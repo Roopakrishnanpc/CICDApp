@@ -9,6 +9,14 @@ pipeline {
             // args '-v /root/.m2:/root/.m2' // Example for persisting Maven cache
         }
     }
+        stages {
+        stage('Check Java Version') {
+            steps {
+                script {
+                    sh 'java -version'
+                }
+            }
+        }
     stages {
         stage('Build') {
             steps {
