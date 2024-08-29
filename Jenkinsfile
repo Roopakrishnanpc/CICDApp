@@ -34,6 +34,14 @@ pipeline {
                     withSonarQubeEnv(credentialsId: 'sonarqbe-token') {
                         sh './mvnw sonar:sonar'
                     }
+                                        timeout(time: 1, unit: 'HOURS')
+                    {
+						def a=waitForQualityGate()
+						if(a.status!='OK')
+						{
+							error "Pipleline aborted due to quality  gate failure: ${a.status}"
+						} 
+					}
                 }
             }
         }
