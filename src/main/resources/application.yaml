@@ -4,4 +4,6 @@ dummyservice:
 #run as -Dserver.port=8081 and see in envrioment variables
 sonar:
   java:
-    binaries: target/classes
+    binaries: .
+
+#  sources: src/main/java

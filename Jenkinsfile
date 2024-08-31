@@ -1,39 +1,24 @@
 pipeline {
-    agent {
-        docker {
-            image 'openjdk:21'  // Use the appropriate Docker image
-            args '-u 0:0'  // Optional: Run as root if needed
-            // Optional: Add Docker options if necessary
-            // args '-v /root/.m2:/root/.m2' // Example for persisting Maven cache
-        }
-    }
+    agent any
     environment{
 		VERSION = "${env.BUILD_ID}"
 	}
     stages {
-        stage('Check Java Version') {
-            steps {
-                script {
-                    sh 'java -version'
-                }
-            }
+    stage("Sonar java install") {
+		agent {
+	        docker {
+	            image 'openjdk:21'  // Use the appropriate Docker image
+	            args '-u 0:0'  // Optional: Run as root if needed
+	            // Optional: Add Docker options if necessary
+	            // args '-v /root/.m2:/root/.m2' // Example for persisting Maven cache
+	        }
         }
-        
-        stage('Build') {
-            steps {
-                script {
-                    // Ensure Maven wrapper has executable permissions and run the Maven build
-                    sh 'chmod +x mvnw'
-                    sh './mvnw clean install'
-                }
-            }
-        }
-
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    // Run SonarQube analysis
+        steps {
+              script {
+                    
                     withSonarQubeEnv(credentialsId: 'sonarqbe-token') {
+						sh 'java -version'
+						sh 'chmod +x mvnw'
                         sh './mvnw sonar:sonar'
                     }
                                         timeout(time: 1, unit: 'HOURS')
@@ -45,8 +30,37 @@ pipeline {
 						} 
 					}
                 }
-            }
-        } 
+        }
+     }
+//        stage('Build') {
+//            steps {
+//                script {
+//                    // Ensure Maven wrapper has executable permissions and run the Maven build
+//                    sh 'chmod +x mvnw'
+//                    sh './mvnw clean install'
+//                }
+//            }
+//        }
+
+//        stage('SonarQube Analysis') {
+//           steps {
+//                script {
+//                    // Run SonarQube analysis
+//                    withSonarQubeEnv(credentialsId: 'sonarqbe-token') {
+//						sh 'chmod +x mvnw'
+//                        sh './mvnw sonar:sonar'
+//                    }
+//                                        timeout(time: 1, unit: 'HOURS')
+//                    {
+//						def a=waitForQualityGate()
+//						if(a.status!='OK')
+//						{
+//							error "Pipleline aborted due to quality  gate failure: ${a.status}"
+//						} 
+//					}
+//                }
+//            }
+//        } 
  
         stage('Print Environment Variables') {
             steps {
@@ -56,14 +70,15 @@ pipeline {
             }
         }
 
-        stage('Build and Test') {
-            steps {
-                script {
-                    sh 'chmod +x mvnw'
-                    sh './mvnw clean test -X'  // Run Maven with debug logging
-                }
-            }
-        }
+//        stage('Build and Test') {
+//            steps {
+//                script {
+//                    sh 'chmod +x mvnw'
+//                    sh './mvnw clean test -X'  // Run Maven with debug logging
+//                }
+//            }
+//        }
+        //docker pass nexus is the token created in nexus
         stage("docker build & docker push")
         {
 			steps{
