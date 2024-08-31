@@ -85,10 +85,10 @@ pipeline {
 				script{
 					withCredentials([string(credentialsId: 'docker-pass-nexus', variable: 'docker_password')]) {
 					sh '''
-						docker build -t http://34.168.178.176:8083/springapp:${VERSION} .
+						docker build -t 34.168.178.176:8083/springapp:${VERSION} .
 						docker login -u admin -p ${docker_password} 34.168.178.176:8083
-						docker push http://34.168.178.176:8083/springapp:${VERSION}
-						docker rmi http://34.168.178.176:8083/springapp:${VERSION} 
+						docker push 34.168.178.176:8083/springapp:${VERSION}
+						docker rmi 34.168.178.176:8083/springapp:${VERSION} 
 					'''
 					//springapp:latest can also be given and VERSION IS GIVEN ABOVE 
 					}
