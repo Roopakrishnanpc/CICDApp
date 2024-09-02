@@ -122,6 +122,7 @@ stage("pushing the helm charts to nexus"){
                     }
                 }
             }
+        }
     }
     
     post {
