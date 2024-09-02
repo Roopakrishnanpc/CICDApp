@@ -19,7 +19,7 @@ pipeline {
                     withSonarQubeEnv(credentialsId: 'sonarqbe-token') {
 						sh 'java -version'
 						sh 'chmod +x mvnw'
-						sh './mvnw clean install'
+						//sh './mvnw clean install'
                         sh './mvnw sonar:sonar'
                     }
                                         timeout(time: 1, unit: 'HOURS')
@@ -101,7 +101,7 @@ pipeline {
 				script{
 					dir('kubernetes/') {
                        // withEnv(['DATREE_TOKEN=GJdx2cP2TCDyUY3EhQKgTc']) {
-							 // sh 'helm datree config set offline local'
+							  sh 'helm datree config set offline local'
                               sh 'helm datree test CICDApp/'
                        // }
                     }
