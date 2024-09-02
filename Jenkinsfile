@@ -100,7 +100,7 @@ pipeline {
 				script{
 					dir('kubernetes/') {
                        // withEnv(['DATREE_TOKEN=GJdx2cP2TCDyUY3EhQKgTc']) {
-							  sh 'helm datree config set offline local'
+							 // sh 'helm datree config set offline local'
                               sh 'helm datree test CICDApp/'
                        // }
                     }
