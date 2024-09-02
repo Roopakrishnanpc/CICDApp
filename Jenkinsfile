@@ -101,14 +101,27 @@ pipeline {
 				script{
 					dir('kubernetes/') {
                        withEnv(['DATREE_TOKEN=GJdx2cP2TCDyUY3EhQKgTc']) {
-							  sh 'helm datree config set offline local'
+							 // sh 'helm datree config set offline local'
                               sh 'helm datree test CICDApp/'
                        }
                     }
 				}
 			}
 		}
-
+stage("pushing the helm charts to nexus"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'docker-pass-nexus', variable: 'docker_password')]) {
+                          dir('kubernetes/') {
+                             sh '''
+                                 helmversion=$( helm show chart CICDApp | grep version | cut -d: -f 2 | tr -d ' ')
+                                 tar -czvf  CICDApp-${helmversion}.tgz CICDApp/
+                                 curl -u admin:$docker_password http://34.168.178.176:8081/repository/helm-hosted/ --upload-file CICDApp-${helmversion}.tgz -v
+                            '''
+                          }
+                    }
+                }
+            }
     }
     
     post {
