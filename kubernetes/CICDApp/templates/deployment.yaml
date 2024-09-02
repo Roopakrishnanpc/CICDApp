@@ -53,3 +53,4 @@ spec:
               cpu: 0.5
           securityContext:
             allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
