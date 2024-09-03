@@ -116,7 +116,7 @@ stage("pushing the helm charts to nexus"){
                              sh '''
                                  helmversion=$( helm show chart cicdapp | grep version | cut -d: -f 2 | tr -d ' ')
                                  tar -czvf  cicdapp-${helmversion}.tgz cicdapp/
-                                 curl -u admin:$docker_password http://35.247.121.190:8081/repository/helm-hosted/ --upload-file CICDApp-${helmversion}.tgz -v
+                                 curl -u admin:$docker_password http://35.247.121.190:8081/repository/helm-hosted/ --upload-file cicdapp-${helmversion}.tgz -v
                             '''
                           }
                     }
