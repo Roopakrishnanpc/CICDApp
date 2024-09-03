@@ -123,7 +123,38 @@ stage("pushing the helm charts to nexus"){
                 }
             }
         }
-    }
+stage('Deploying application on k8s cluster') {
+            steps {
+                script {
+                    // Using withCredentials to bind the kubeconfig file
+                    withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG_FILE')]) {
+                        dir('kubernetes/') {
+                            // Export the KUBECONFIG variable and use helm to deploy
+                            sh '''
+                                export KUBECONFIG=$KUBECONFIG_FILE
+                                helm upgrade --install --set image.repository="34.168.178.176:8083/springapp" --set image.tag="${VERSION}" myjavaapp CICDApp/
+                            '''
+                        }
+                    }
+                }
+            }
+        }
+
+//        stage('Verifying app deployment') {
+//            steps {
+//                script {
+//                    withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG_FILE')]) {
+//                        // Set the KUBECONFIG environment variable and run the kubectl command
+//                        sh '''
+//                            export KUBECONFIG=$KUBECONFIG_FILE
+//                            kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl http://CICDApp-CICDApp:5000
+//                        '''
+//                    }
+//                }
+//            }
+//        }
+//    }
+   }
     
     post {
         always {
