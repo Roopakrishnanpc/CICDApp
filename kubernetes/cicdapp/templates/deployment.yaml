@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "CICDApp.fullname" . }}
+  name: {{ include "cicdapp.fullname" . }}
   labels: 
-    {{- include "CICDApp.labels" . | nindent 4 }}
+    {{- include "cicdapp.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "CICDApp.selectorLabels" . | nindent 6 }}
+      {{- include "cicdapp.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "CICDApp.selectorLabels" . | nindent 8 }}
+        {{- include "cicdapp.selectorLabels" . | nindent 8 }}
     spec:
       imagePullSecrets:
         - name: registry-secret

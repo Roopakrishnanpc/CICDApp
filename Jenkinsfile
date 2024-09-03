@@ -102,7 +102,7 @@ pipeline {
 					dir('kubernetes/') {
                        withEnv(['DATREE_TOKEN=GJdx2cP2TCDyUY3EhQKgTc']) {
 							 // sh 'helm datree config set offline local'
-                              sh 'helm datree test CICDApp/'
+                              sh 'helm datree test cicdapp/'
                        }
                     }
 				}
@@ -114,8 +114,8 @@ stage("pushing the helm charts to nexus"){
                     withCredentials([string(credentialsId: 'docker-pass-nexus', variable: 'docker_password')]) {
                           dir('kubernetes/') {
                              sh '''
-                                 helmversion=$( helm show chart CICDApp | grep version | cut -d: -f 2 | tr -d ' ')
-                                 tar -czvf  CICDApp-${helmversion}.tgz CICDApp/
+                                 helmversion=$( helm show chart cicdapp | grep version | cut -d: -f 2 | tr -d ' ')
+                                 tar -czvf  cicdapp-${helmversion}.tgz cicdapp/
                                  curl -u admin:$docker_password http://35.247.121.190:8081/repository/helm-hosted/ --upload-file CICDApp-${helmversion}.tgz -v
                             '''
                           }
@@ -130,10 +130,8 @@ stage('Deploying application on k8s cluster') {
                     withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG_FILE')]) {
                         dir('kubernetes/') {
                             // Export the KUBECONFIG variable and use helm to deploy
-                            sh '''
-                                export KUBECONFIG=$KUBECONFIG_FILE
-                                helm upgrade --install --set image.repository="35.247.121.190:8083/springapp" --set image.tag="${VERSION}" myjavaapp CICDApp/
-                            '''
+                            sh 'export KUBECONFIG=$KUBECONFIG_FILE'
+                            sh  'helm upgrade --install --set image.repository="35.247.121.190:8083/springapp" --set image.tag="${VERSION}" myjavaapp cicdapp/ '
                         }
                     }
                 }
@@ -147,7 +145,7 @@ stage('Deploying application on k8s cluster') {
 //                        // Set the KUBECONFIG environment variable and run the kubectl command
 //                        sh '''
 //                            export KUBECONFIG=$KUBECONFIG_FILE
-//                            kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl http://CICDApp-CICDApp:5000
+//                            kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl http://cicdapp-cicdapp:5000
 //                        '''
 //                    }
 //                }
