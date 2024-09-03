@@ -86,10 +86,10 @@ pipeline {
 				script{
 					withCredentials([string(credentialsId: 'docker-pass-nexus', variable: 'docker_password')]) {
 					sh '''
-						docker build -t 34.168.178.176:8083/springapp:${VERSION} .
-						docker login -u admin -p ${docker_password} 34.168.178.176:8083
-						docker push 34.168.178.176:8083/springapp:${VERSION}
-						docker rmi 34.168.178.176:8083/springapp:${VERSION} 
+						docker build -t 35.247.121.190:8083/springapp:${VERSION} .
+						docker login -u admin -p ${docker_password} 35.247.121.190:8083
+						docker push 35.247.121.190:8083/springapp:${VERSION}
+						docker rmi 35.247.121.190:8083/springapp:${VERSION} 
 					'''
 					//springapp:latest can also be given and VERSION IS GIVEN ABOVE 
 					}
@@ -116,7 +116,7 @@ stage("pushing the helm charts to nexus"){
                              sh '''
                                  helmversion=$( helm show chart CICDApp | grep version | cut -d: -f 2 | tr -d ' ')
                                  tar -czvf  CICDApp-${helmversion}.tgz CICDApp/
-                                 curl -u admin:$docker_password http://34.168.178.176:8081/repository/helm-hosted/ --upload-file CICDApp-${helmversion}.tgz -v
+                                 curl -u admin:$docker_password http://35.247.121.190:8081/repository/helm-hosted/ --upload-file CICDApp-${helmversion}.tgz -v
                             '''
                           }
                     }
@@ -132,7 +132,7 @@ stage('Deploying application on k8s cluster') {
                             // Export the KUBECONFIG variable and use helm to deploy
                             sh '''
                                 export KUBECONFIG=$KUBECONFIG_FILE
-                                helm upgrade --install --set image.repository="34.168.178.176:8083/springapp" --set image.tag="${VERSION}" myjavaapp CICDApp/
+                                helm upgrade --install --set image.repository="35.247.121.190:8083/springapp" --set image.tag="${VERSION}" myjavaapp CICDApp/
                             '''
                         }
                     }
