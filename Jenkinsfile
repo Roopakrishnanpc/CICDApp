@@ -86,10 +86,10 @@ pipeline {
 				script{
 					withCredentials([string(credentialsId: 'docker-pass-nexus', variable: 'docker_password')]) {
 					sh '''
-						docker build -t 35.247.121.190:8084/springapp:${VERSION} .
-						docker login -u admin -p ${docker_password} 35.247.121.190:8084
-						docker push 35.247.121.190:8084/springapp:${VERSION}
-						docker rmi 35.247.121.190:8084/springapp:${VERSION} 
+						docker build -t 35.247.121.190:8083/springapp:${VERSION} .
+						docker login -u admin -p ${docker_password} 35.247.121.190:8083
+						docker push 35.247.121.190:8083/springapp:${VERSION}
+						docker rmi 35.247.121.190:8083/springapp:${VERSION} 
 					'''
 					//springapp:latest can also be given and VERSION IS GIVEN ABOVE 
 					}
@@ -131,7 +131,7 @@ stage('Deploying application on k8s cluster') {
                         dir('kubernetes/') {
                             // Export the KUBECONFIG variable and use helm to deploy
                             
-                            sh  'helm upgrade --install --set image.repository="35.247.121.190:8084/springapp" --set image.tag="${VERSION}" myjavaapp cicdapp/ '
+                            sh  'helm upgrade --install --set image.repository="35.247.121.190:8083/springapp" --set image.tag="${VERSION}" myjavaapp cicdapp/ '
                         }
                     }
                 }
