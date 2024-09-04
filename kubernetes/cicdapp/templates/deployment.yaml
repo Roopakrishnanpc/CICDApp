@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "cicdapp.fullname" . }}
+  name: myjavaapp-cicdapp
   namespace: jenkin
   labels: 
-    {{- include "cicdapp.labels" . | nindent 4 }}
+    app: myjavaapp-cicdapp
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      {{- include "cicdapp.selectorLabels" . | nindent 6 }}
+      app: myjavaapp-cicdapp
   template:
     metadata:
       labels:
-        {{- include "cicdapp.selectorLabels" . | nindent 8 }}
+        app: myjavaapp-cicdapp
     spec:
       imagePullSecrets:
         - name: registry-secret
       containers:
-        - name: {{ .Chart.Name }}
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        - name: myjavaapp-cicdapp
+          image: 35.247.121.190:8083/springapp:104
           command: ["/bin/sh"]
           args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 5000
@@ -47,11 +47,11 @@ spec:
             timeoutSeconds: 10
           resources:
             requests:
-              memory: 0.25Gi
-              cpu: 0.5
+              memory: 256Mi
+              cpu: 500m
             limits:
-              memory: 0.25Gi 
-              cpu: 0.5
+              memory: 256Mi
+              cpu: 500m
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
