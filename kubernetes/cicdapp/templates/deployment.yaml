@@ -6,7 +6,7 @@ metadata:
   labels: 
     app: myjavaapp-cicdapp
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: myjavaapp-cicdapp
@@ -19,7 +19,7 @@ spec:
         - name: registry-secret
       containers:
         - name: myjavaapp-cicdapp
-          image: 35.247.121.190:8083/springapp:104
+          image: 35.247.121.190:8083/springapp:107
           command: ["/bin/sh"]
           args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
           imagePullPolicy: IfNotPresent
