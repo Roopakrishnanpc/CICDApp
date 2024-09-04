@@ -131,7 +131,7 @@ stage('Deploying application on k8s cluster') {
                         dir('kubernetes/') {
                             // Export the KUBECONFIG variable and use helm to deploy
                             
-                            sh  'helm upgrade --install --set image.repository="35.247.121.190:8083/springapp" --set image.tag="${VERSION}" myjavaapp cicdapp/ '
+                            sh  'helm upgrade --install --namespace jenkin --set image.repository="35.247.121.190:8083/springapp" --set image.tag="${VERSION}" myjavaapp cicdapp/ '
                         }
                     }
                 }
