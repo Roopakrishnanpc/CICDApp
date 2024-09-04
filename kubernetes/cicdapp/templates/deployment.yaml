@@ -15,6 +15,7 @@ spec:
       labels:
         {{- include "cicdapp.selectorLabels" . | nindent 8 }}
     spec:
+      serviceAccountName: jenkin
       imagePullSecrets:
         - name: registry-secret
       containers:
