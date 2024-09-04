@@ -30,7 +30,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /home
-              port: http
+              port: 5000
             initialDelaySeconds: 60
             periodSeconds: 5
             successThreshold: 1
@@ -39,7 +39,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /home
-              port: http
+              port: 5000
             initialDelaySeconds: 60
             periodSeconds: 5
             successThreshold: 1
