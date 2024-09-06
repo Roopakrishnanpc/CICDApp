@@ -19,7 +19,7 @@ import com.CICD.entity.Users;
 import com.CICD.service.CICDService;
 
 @RestController
-@RequestMapping("/home/homepage")
+//@RequestMapping("/home/homepage")
 public class CICDController {
 
 	@Autowired
