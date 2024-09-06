@@ -146,7 +146,7 @@ stage("pushing the helm charts to nexus"){
                     }
                     
                     echo "Deployment approved for ${params.project_name}."
-                
+                }
                 }
             }
         }
