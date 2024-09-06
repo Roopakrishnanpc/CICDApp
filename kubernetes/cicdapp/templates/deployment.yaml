@@ -31,7 +31,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /home
-              port: 8080
+              port: http
             initialDelaySeconds: 60
             periodSeconds: 5
             successThreshold: 1
@@ -40,7 +40,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /home
-              port: 8080
+              port: http
             initialDelaySeconds: 60
             periodSeconds: 5
             successThreshold: 1
