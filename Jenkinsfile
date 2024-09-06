@@ -1,8 +1,12 @@
 pipeline {
     agent any
+    
     environment{
 		VERSION = "${env.BUILD_ID}"
 	}
+	    parameters {
+        string(name: 'project_name', defaultValue: 'my_project', description: 'Name of the project to deploy')
+    }
     stages {
     stage("Sonar java install") {
 		agent {
