@@ -23,7 +23,7 @@ pipeline {
                     withSonarQubeEnv(credentialsId: 'sonarqbe-token') {
 						sh 'java -version'
 						sh 'chmod +x mvnw'
-						//sh './mvnw clean install'
+						sh './mvnw clean install'
                         sh './mvnw sonar:sonar'
                     }
                                         timeout(time: 1, unit: 'HOURS')
