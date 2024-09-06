@@ -26,12 +26,12 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
               path: /home
-              port: http
+              port: 8080
             initialDelaySeconds: 60
             periodSeconds: 5
             successThreshold: 1
@@ -40,7 +40,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /home
-              port: http
+              port: 8080
             initialDelaySeconds: 60
             periodSeconds: 5
             successThreshold: 1
