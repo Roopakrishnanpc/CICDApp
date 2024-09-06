@@ -175,7 +175,7 @@ stage('Deploying application on k8s cluster') {
                         // Set the KUBECONFIG environment variable and run the kubectl command
                         sh '''curl -LO https://dl.k8s.io/release/v1.27.2/bin/linux/amd64/kubectl
                         chmod u+x ./kubectl
-                        ./kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-cicdapp:5000'''
+                        ./kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-cicdapp:8080 -n jenkin'''
                 }
             }
         }
