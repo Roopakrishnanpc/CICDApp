@@ -140,8 +140,10 @@ stage("pushing the helm charts to nexus"){
                     
                     echo "User input received: ${userInput}"
                     
-                    // Check if deployment was approved
-                    if (!userInput['DeployGate']) {
+                    // Use 'get' method to access map values
+                    def deployGate = userInput.get('DeployGate')
+                    
+                    if (!deployGate) {
                         error "Deployment was aborted by the user."
                     }
                     
