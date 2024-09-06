@@ -150,20 +150,22 @@ stage('Deploying application on k8s cluster') {
         }
 
 
-//        stage('Verifying app deployment') {
-//            steps {
-//                script {
-//                    withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG_FILE')]) {
-//                        // Set the KUBECONFIG environment variable and run the kubectl command
-//                        sh '''
-//                            export KUBECONFIG=$KUBECONFIG_FILE
-//                            kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl http://cicdapp-cicdapp:5000
-//                        '''
-//                    }
-//                }
-//            }
-//        }
-//    }
+        stage('Verifying app deployment') {
+            steps {
+                script {
+                    //withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG_FILE')]) {
+                    withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'kubernetes-jenkins-secret', namespace: 'jenkin',  serverUrl: 'https://10.138.0.17:6443') {
+
+                        // Set the KUBECONFIG environment variable and run the kubectl command
+                        sh '''
+                            export KUBECONFIG=$KUBECONFIG_FILE
+                            kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-cicdapp:5000
+                        '''
+                    }
+                }
+            }
+        }
+    }
    }
     
     post {
