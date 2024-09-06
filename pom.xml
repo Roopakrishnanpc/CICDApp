@@ -22,7 +22,7 @@
         <sonar.host.url>http://34.169.75.32:9000</sonar.host.url> <!-- Replace with your SonarQube server URL -->
         <sonar.login>sonarqbe-token</sonar.login> <!-- Replace with your SonarQube token -->
          <!-- <sonar.java.binaries>${project.build.directory}/classes</sonar.java.binaries>Path to compiled classes -->
-         <sonar.java.binaries>${project.build.outputDirectory}</sonar.java.binaries>
+<!--         <sonar.java.binaries>${project.build.outputDirectory}</sonar.java.binaries>-->
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -108,6 +108,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+<dependency>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>4.0.0.4121</version>
+</dependency>
 
 
     </dependencies>
