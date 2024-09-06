@@ -161,7 +161,6 @@ stage('Deploying application on k8s cluster') {
                             export KUBECONFIG=$KUBECONFIG_FILE
                             kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-cicdapp:5000
                         '''
-                    }
                 }
             }
         }
