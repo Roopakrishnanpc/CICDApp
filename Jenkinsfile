@@ -173,7 +173,9 @@ stage('Deploying application on k8s cluster') {
                     withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'kubernetes-jenkins-secret', namespace: 'jenkin',  serverUrl: 'https://10.138.0.17:6443') {
 
                         // Set the KUBECONFIG environment variable and run the kubectl command
-                        sh 'kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-cicdapp:5000'
+                        sh '''curl -LO https://dl.k8s.io/release/v1.27.2/bin/linux/amd64/kubectl
+                        chmod u+x ./kubectl
+                        ./kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-cicdapp:5000'''
                 }
             }
         }
