@@ -12,14 +12,15 @@ import com.CICD.entity.Users;
 import com.CICD.service.CICDService;
 
 @Controller
-@RequestMapping("/home")
+//@RequestMapping("/home")
+@RequestMapping("/")
 public class CI_CDController {
 
     @Autowired
     private CICDService cicdservice;
 
     // Controller Method for Home
-    @GetMapping
+    @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("user", new Users()); // For add user form
         //model.addAttribute("userForUpdate", new Users()); // Initialize for update
@@ -45,7 +46,8 @@ public class CI_CDController {
     public String updateUser(@ModelAttribute("userForUpdate") Users user) {//,@RequestParam("id") int id) {
         cicdservice.updateUsersById(user.getId(),user);
         //return "home"; 
-        return "redirect:/home"; // Redirect to home after updating user
+        //return "redirect:/home"; // Redirect to home after updating user
+        return "redirect:/"; 
     }
 
 

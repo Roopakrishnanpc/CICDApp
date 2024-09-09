@@ -30,7 +30,7 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /home
+              path: /
               port: 8080
             initialDelaySeconds: 60
             periodSeconds: 5
@@ -39,7 +39,7 @@ spec:
             timeoutSeconds: 10
           readinessProbe:
             httpGet:
-              path: /home
+              path: /
               port: 8080
             initialDelaySeconds: 60
             periodSeconds: 5
@@ -48,11 +48,11 @@ spec:
             timeoutSeconds: 10
           resources:
             requests:
-              memory: 1Gi
-              cpu: 1
+              memory: 0.25Gi
+              cpu: 0.5
             limits:
-              memory: 1Gi 
-              cpu: 1
+              memory: 0.25Gi 
+              cpu: 0.5
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
