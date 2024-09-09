@@ -55,4 +55,10 @@ spec:
               cpu: 0.5
           securityContext:
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: false
+            readOnlyRootFilesystem: true
+          volumeMounts:
+            - name: tomcat-logs
+              mountPath: /usr/local/tomcat/logs
+      volumes:
+      - name: tomcat-logs
+        emptyDir: {}  # Writable volume for logs
