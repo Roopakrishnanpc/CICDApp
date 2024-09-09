@@ -166,20 +166,20 @@ stage('Deploying application on k8s cluster') {
                 }
             }
         }
-        stage('Verifying app deployment') {
-            steps {
-                script {
-                    //withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG_FILE')]) {
-                    withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'kubernetes-jenkins-secret', namespace: 'jenkin',  serverUrl: 'https://10.138.0.17:6443') {
-
-                        // Set the KUBECONFIG environment variable and run the kubectl command
-                        sh '''curl -LO https://dl.k8s.io/release/v1.27.2/bin/linux/amd64/kubectl
-                        chmod u+x ./kubectl
-                        ./kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-cicdapp:8080/ -n jenkin'''
-                }
-            }
-        }
-    }
+//        stage('Verifying app deployment') {
+//            steps {
+//                script {
+//                    //withCredentials([file(credentialsId: 'kubeconfig-file', variable: 'KUBECONFIG_FILE')]) {
+//                    withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'kubernetes-jenkins-secret', namespace: 'jenkin',  serverUrl: 'https://10.138.0.17:6443') {
+//
+//                        // Set the KUBECONFIG environment variable and run the kubectl command
+//                        sh '''curl -LO https://dl.k8s.io/release/v1.27.2/bin/linux/amd64/kubectl
+//                        chmod u+x ./kubectl
+//                        ./kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-cicdapp:8081/ -n jenkin'''
+//                }
+//            }
+//        }
+//    }
    }
     
     post {
