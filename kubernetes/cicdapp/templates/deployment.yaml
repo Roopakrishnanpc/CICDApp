@@ -57,8 +57,14 @@ spec:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
           volumeMounts:
-            - name: tomcat-logs
-              mountPath: /usr/local/tomcat/logs
+            - name: tomcat-config
+              mountPath: /usr/local/tomcat/conf  # Mount path for configuration files
+              readOnly: true
+            - name: tomcat-data
+              mountPath: /usr/local/tomcat/logs  # Mount path for writable application data
       volumes:
-      - name: tomcat-logs
-        emptyDir: {}  # Writable volume for logs
+        - name: tomcat-config
+          configMap:
+            name: tomcat-config-map
+        - name: tomcat-data
+          emptyDir: {}  # Writable volume for application data

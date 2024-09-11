@@ -25,7 +25,7 @@ public class CI_CDController {
         model.addAttribute("user", new Users()); // For add user form
         //model.addAttribute("userForUpdate", new Users()); // Initialize for update
         model.addAttribute("users", cicdservice.getAllUsers()); // List of users for displaying
-        return "home";
+        return "home"; //previously return "home";
     }
 
 //    @GetMapping("/getUsers/{id}")
@@ -57,7 +57,7 @@ public class CI_CDController {
         model.addAttribute("user", new Users()); // Clear form
         model.addAttribute("users", cicdservice.getAllUsers()); // Refresh list of users
         model.addAttribute("message", "User added successfully.");
-        return "home";
+        return "redirect:/"; //return "home";
     }
 //    @PostMapping("/updateUsers")
 //    public String updateUser(@ModelAttribute("userForUpdate") Users user, BindingResult result, Model model) {
@@ -81,7 +81,7 @@ public class CI_CDController {
         model.addAttribute("user", new Users()); // Clear form
         model.addAttribute("users", cicdservice.getAllUsers()); // Refresh list of users
         model.addAttribute("message", "User deleted successfully.");
-        return "home";
+        return "redirect:/"; //return "home";
     }
 
     @PostMapping("/deleteAllUsers")
@@ -90,7 +90,7 @@ public class CI_CDController {
         model.addAttribute("user", new Users()); // Clear form
         model.addAttribute("users", cicdservice.getAllUsers()); // Refresh list of users
         model.addAttribute("message", "All users deleted successfully.");
-        return "home";
+        return "redirect:/"; //return "home";
     }
 }
 

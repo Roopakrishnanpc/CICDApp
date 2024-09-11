@@ -38,7 +38,8 @@
     %>
 
     <!-- Add User Form -->
-    <form:form action="${pageContext.request.contextPath}/home/addUsers" method="post" modelAttribute="user">
+<%--     <form:form action="${pageContext.request.contextPath}/home/addUsers" method="post" modelAttribute="user"> --%>
+    <form:form action="${pageContext.request.contextPath}/addUsers" method="post" modelAttribute="user">
         <label for="name">Name:</label>
         <form:input path="name" id="name" required="true" />
         <label for="jobName">Job Name:</label>
@@ -53,7 +54,8 @@
     <!-- Update User Form -->
  <!-- Update User Form -->
     <h2>Update User</h2>
-    <form action="${pageContext.request.contextPath}/home/getUsers" method="get">
+<%--     <form action="${pageContext.request.contextPath}/home/getUsers" method="get"> --%>
+  <form action="${pageContext.request.contextPath}/getUsers" method="get"> --%>
         <label for="updateId">User ID:</label>
         <input type="number" id="updateId" name="id" required="true" />
         <button type="submit">Get User Details</button>
@@ -108,7 +110,8 @@
 
     <!-- Delete User Form -->
     <h2>Delete User</h2>
-    <form action="${pageContext.request.contextPath}/home/deleteUsers" method="post">
+    <form action="${pageContext.request.contextPath}/deleteUsers" method="post">
+<%--     <form action="${pageContext.request.contextPath}/home/deleteUsers" method="post"> --%>
         <label for="deleteId">User ID:</label>
         <input type="number" id="deleteId" name="id" required="true" />
         <button type="submit">Delete User</button>
@@ -116,7 +119,8 @@
 
     <!-- Delete All Users Form -->
     <h2>Delete All Users</h2>
-    <form action="${pageContext.request.contextPath}/home/deleteAllUsers" method="post">
+    <form action="${pageContext.request.contextPath}/deleteAllUsers" method="post">
+<%--     <form action="${pageContext.request.contextPath}/home/deleteAllUsers" method="post"> --%>
         <button type="submit">Delete All Users</button>
     </form>
 

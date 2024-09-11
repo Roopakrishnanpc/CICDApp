@@ -6,8 +6,8 @@
 </head>
 <body>
     <h1>Update User</h1>
-
-    <form:form action="${pageContext.request.contextPath}/home/updateUser" method="post" modelAttribute="userForUpdate">
+	<form:form action="${pageContext.request.contextPath}/updateUser" method="post" modelAttribute="userForUpdate">
+<%--     <form:form action="${pageContext.request.contextPath}/home/updateUser" method="post" modelAttribute="userForUpdate"> --%>
         <form:hidden path="id"/>
         <label for="name">Name:</label>
         <form:input path="name" id="name" required="true"/>
@@ -19,7 +19,7 @@
         <form:input path="phonenNo" id="phonenNo" type="number" required="true"/>
         <button type="submit">Update User</button>
     </form:form>
-
-    <a href="${pageContext.request.contextPath}/home">Back to Home</a>
+	<a href="${pageContext.request.contextPath}/">Back to Home</a>
+<%--     <a href="${pageContext.request.contextPath}/home">Back to Home</a> --%>
 </body>
 </html>
