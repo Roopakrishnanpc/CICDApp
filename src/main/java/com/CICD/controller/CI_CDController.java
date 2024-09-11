@@ -15,7 +15,7 @@ import com.CICD.service.CICDService;
 //@RequestMapping("/home")
 @RequestMapping("/")
 public class CI_CDController {
-
+	private static final String REDIRECT_HOME = "redirect:/";
     @Autowired
     private CICDService cicdservice;
 
@@ -47,17 +47,20 @@ public class CI_CDController {
         cicdservice.updateUsersById(user.getId(),user);
         //return "home"; 
         //return "redirect:/home"; // Redirect to home after updating user
-        return "redirect:/"; 
+        return REDIRECT_HOME; 
     }
 
 
     @PostMapping("/addUsers")
-    public String addUser(@ModelAttribute("user") Users user, Model model) {
+    public String addUser(@ModelAttribute("user") Users user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "home"; // Show validation errors on the home page
+        }
         cicdservice.addUsers(user); // Add the user
         model.addAttribute("user", new Users()); // Clear form
         model.addAttribute("users", cicdservice.getAllUsers()); // Refresh list of users
         model.addAttribute("message", "User added successfully.");
-        return "redirect:/"; //return "home";
+        return REDIRECT_HOME; //return "home";
     }
 //    @PostMapping("/updateUsers")
 //    public String updateUser(@ModelAttribute("userForUpdate") Users user, BindingResult result, Model model) {
@@ -81,7 +84,7 @@ public class CI_CDController {
         model.addAttribute("user", new Users()); // Clear form
         model.addAttribute("users", cicdservice.getAllUsers()); // Refresh list of users
         model.addAttribute("message", "User deleted successfully.");
-        return "redirect:/"; //return "home";
+        return REDIRECT_HOME; //return "home";
     }
 
     @PostMapping("/deleteAllUsers")
@@ -90,7 +93,7 @@ public class CI_CDController {
         model.addAttribute("user", new Users()); // Clear form
         model.addAttribute("users", cicdservice.getAllUsers()); // Refresh list of users
         model.addAttribute("message", "All users deleted successfully.");
-        return "redirect:/"; //return "home";
+        return REDIRECT_HOME; //return "home";
     }
 }
 
