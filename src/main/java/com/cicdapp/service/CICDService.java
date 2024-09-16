@@ -1,4 +1,4 @@
-package com.CICD.service;
+package com.cicdapp.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.CICD.entity.Users;
-import com.CICD.exception.UserNotFoundException;
-import com.CICD.repository.CICDRepo;
+import com.cicdapp.entity.Users;
+import com.cicdapp.exception.UserNotFoundException;
+import com.cicdapp.repository.CICDRepo;
 @Service
 public class CICDService {
 @Autowired

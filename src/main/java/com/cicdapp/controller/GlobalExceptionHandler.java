@@ -1,4 +1,4 @@
-//package com.CICD.controller;
+//package com.cicdapp.controller;
 //
 //import org.springframework.ui.Model;
 //import org.springframework.web.bind.annotation.ControllerAdvice;

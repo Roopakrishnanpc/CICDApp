@@ -1,4 +1,4 @@
-package com.CICD.service;
+package com.cicdapp.service;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.CICD.component;
+package com.cicdapp.component;
 
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
@@ -20,7 +20,7 @@ import jakarta.annotation.PostConstruct;
 @Endpoint(id = "custom")
 public class CustomActuatorEndpoint {
 
-    private String message = "Default message";
+    public String message;// = "Default message";
 
 //    @ReadOperation
 //    public String getMessage() {

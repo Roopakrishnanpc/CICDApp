@@ -1,4 +1,4 @@
-package com.CICD.entity;
+package com.cicdapp.entity;
 
 import org.hibernate.annotations.GeneratorType;
 

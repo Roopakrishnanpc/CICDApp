@@ -1,4 +1,4 @@
-package com.CICD.monitorning;
+package com.cicdapp.monitorning;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

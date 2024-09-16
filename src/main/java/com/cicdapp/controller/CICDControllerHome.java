@@ -1,4 +1,4 @@
-package com.CICD.controller;
+package com.cicdapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import com.CICD.entity.Users;
-import com.CICD.service.CICDService;
+import com.cicdapp.entity.Users;
+import com.cicdapp.service.CICDService;
 
 @Controller
 @RequestMapping("/")

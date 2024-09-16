@@ -1,11 +1,11 @@
-package com.CICD.configuration;
+package com.cicdapp.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.CICD.component.CustomActuatorEndpoint;
-import com.CICD.component.UserManagementEndpoint;
-import com.CICD.service.CICDService;
+import com.cicdapp.component.CustomActuatorEndpoint;
+import com.cicdapp.component.UserManagementEndpoint;
+import com.cicdapp.service.CICDService;
 
 @Configuration
 public class ActuatorConfiguration {

@@ -1,4 +1,4 @@
-package com.CICD.controller;
+package com.cicdapp.controller;
 
 import java.util.List;
 
@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.CICD.entity.Users;
-import com.CICD.service.CICDService;
+import com.cicdapp.entity.Users;
+import com.cicdapp.service.CICDService;
+
 
 @RestController
 //@RequestMapping("/home/homepage")

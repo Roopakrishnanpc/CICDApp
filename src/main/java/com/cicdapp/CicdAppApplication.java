@@ -1,4 +1,4 @@
-package com.CICD;
+package com.cicdapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

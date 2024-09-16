@@ -62,7 +62,7 @@
 //        cicdService.deleteAllUsers();
 //    }
 //}
-package com.CICD.component;
+package com.cicdapp.component;
 
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
@@ -76,11 +76,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.CICD.service.CICDService;
+import com.cicdapp.service.CICDService;
 
 import jakarta.annotation.PostConstruct;
 
-import com.CICD.entity.Users;
+import com.cicdapp.entity.Users;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
