@@ -56,7 +56,7 @@ public class CustomActuatorEndpoint {
     @WriteOperation
     public List<String> addReleaseNotes(@Selector String version, String rleasenote)
     {
-    	return releasenotes.put(version,Arrays.stream(rleasenote.split(",")).collect(Collectors.toList()));
+    	return releasenotes.put(version, Arrays.stream(rleasenote.split(",")).toList());
     }
     @DeleteOperation
     public void deleteNotes(@Selector String version)
