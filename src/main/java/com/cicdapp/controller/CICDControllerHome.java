@@ -22,7 +22,7 @@ public class CICDControllerHome {
     @Autowired
     private CICDService cicdservice;
 
-    // Controller Method for Home
+
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute(USER, new Users()); // For add user form

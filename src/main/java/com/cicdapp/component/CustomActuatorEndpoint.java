@@ -20,17 +20,8 @@ import jakarta.annotation.PostConstruct;
 @Endpoint(id = "custom")
 public class CustomActuatorEndpoint {
 
-    public String message;// = "Default message";
+    public String message;
 
-//    @ReadOperation
-//    public String getMessage() {
-//        return this.message;
-//    }
-
-//    @WriteOperation
-//    public void setMessage(String message) {
-//        this.message = message;
-//    }
 
     @DeleteOperation
     public void clearMessage() {

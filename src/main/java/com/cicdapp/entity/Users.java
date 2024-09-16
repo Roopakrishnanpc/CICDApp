@@ -1,6 +1,6 @@
 package com.cicdapp.entity;
 
-import org.hibernate.annotations.GeneratorType;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -19,7 +19,6 @@ import com.cicdapp.service.CICDService;
 
 
 @RestController
-//@RequestMapping("/home/homepage")
 public class CICDController {
 
 	@Autowired
@@ -44,7 +43,6 @@ public class CICDController {
 	}
 	@PutMapping("/users/updateUsersusers/{id}")
 	public ResponseEntity<Users> updateUsersById(@PathVariable int id, @RequestBody Users users)
-	//    public String updateUser(@RequestParam int id, @RequestParam String name, @RequestParam String jobName, @RequestParam String email, @RequestParam Long phonenNo) {
 	{
 		Users updateUsersById=cicdservice.updateUsersById(id,users);
 		return new ResponseEntity<>(updateUsersById, HttpStatus.OK);

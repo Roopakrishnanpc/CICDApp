@@ -67,26 +67,18 @@ package com.cicdapp.component;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.actuate.endpoint.annotation.Selector;
-import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
 import org.springframework.boot.actuate.endpoint.annotation.DeleteOperation;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import com.cicdapp.service.CICDService;
 
-import jakarta.annotation.PostConstruct;
+
 
 import com.cicdapp.entity.Users;
 
-import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+
 
 @Component
 @Endpoint(id = "user-management")
@@ -94,7 +86,7 @@ public class UserManagementEndpoint {
 
     private final CICDService cicdService;
 
-    @Autowired
+
     public UserManagementEndpoint(CICDService cicdService) {
         this.cicdService = cicdService;
     }
