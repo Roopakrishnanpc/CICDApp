@@ -16,6 +16,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>CICDApp</name>
     <description>Demo project for Spring Boot</description>
+<repositories>
+    <repository>
+        <id>central</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <!-- Optional: Add other repositories if necessary -->
+</repositories>
 
     <properties>
         <java.version>21</java.version>
