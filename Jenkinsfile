@@ -24,6 +24,7 @@ pipeline {
 						sh 'java -version'
 						sh 'chmod +x mvnw'
 						sh './mvnw clean install'
+						sh './mvnw clean verify sonar:sonar'
                         sh './mvnw sonar:sonar'
                     }
                                         timeout(time: 1, unit: 'HOURS')
