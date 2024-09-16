@@ -11,7 +11,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.CICD</groupId>
+    <groupId>com.cicdapp</groupId>
     <artifactId>CICDApp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>CICDApp</name>
