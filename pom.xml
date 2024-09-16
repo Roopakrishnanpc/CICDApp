@@ -20,7 +20,7 @@
     <properties>
         <java.version>21</java.version>
         <sonar.host.url>http://34.169.75.32:9000</sonar.host.url> <!-- Replace with your SonarQube server URL -->
-        <sonar.login>sonarqbe-token</sonar.login> <!-- Replace with your SonarQube token -->
+         <!-- Replace with your SonarQube token - sonarqbe-token  <sonar.login></sonar.login>-->
          <!-- <sonar.java.binaries>${project.build.directory}/classes</sonar.java.binaries>Path to compiled classes -->
     </properties>
     <dependencyManagement>
