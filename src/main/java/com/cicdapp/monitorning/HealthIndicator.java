@@ -8,9 +8,9 @@ public interface HealthIndicator extends HealthContributor{
 default Health getHealth(boolean includeDeatils)
 {
 	Health health=this.health();
-	return includeDeatils ? health : health.status(health.getStatus())
+	return includeDeatils ? health : Health.status(health.getStatus())
             .withDetail("status", health.getStatus().getCode())
-            .build();//health.withoutDetails();
+            .build();
 }
 Health health();
 
