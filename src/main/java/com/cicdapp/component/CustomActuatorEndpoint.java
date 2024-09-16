@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
 
 import org.springframework.boot.actuate.endpoint.annotation.DeleteOperation;
 import org.springframework.stereotype.Component;
@@ -20,7 +20,8 @@ import jakarta.annotation.PostConstruct;
 @Endpoint(id = "custom")
 public class CustomActuatorEndpoint {
 
-    public String message;
+	@SuppressWarnings("unused")
+	private String message = "Default message";
 
 
     @DeleteOperation
