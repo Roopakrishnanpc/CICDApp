@@ -33,6 +33,10 @@ pipeline {
 						{
 							error "Pipleline aborted due to quality  gate failure: ${a.status}"
 						} 
+						else
+						{
+							error "${a.status}"
+						}
 					}
                 }
         }
